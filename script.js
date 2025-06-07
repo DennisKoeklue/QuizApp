@@ -58,6 +58,7 @@ let questions = [
 
 ];
 
+let rightQuestions = 0;
 let currentQuestion = 0;
 
 function init() {
@@ -68,6 +69,17 @@ function init() {
 
 
 function showQuestion() {
+
+    if (currentQuestion >= questions.length) {
+        // Todo: Show End Screen
+        document.getElementById('endscreen').style = '';
+        document.getElementById('question-body').style = 'display: none;';
+        document.getElementById('amount-of-questions').innerHTML = questions.length;
+        document.getElementById('amount-of-right-questions').innerHTML = rightQuestions;
+        document.getElementById('header-image').src = `./img/icons/tropy.png`;
+    }else{
+
+    
     let question = questions[currentQuestion];
 
     document.getElementById('currentQuestion').innerHTML = currentQuestion + 1;
@@ -76,7 +88,7 @@ function showQuestion() {
     document.getElementById('answer_2').innerHTML = question['answer_2'];
     document.getElementById('answer_3').innerHTML = question['answer_3'];
     document.getElementById('answer_4').innerHTML = question['answer_4'];
-
+    }
 
 }
 
@@ -87,6 +99,7 @@ function answer(selection) {
 
     if (selectedQuestionNumber == question['right_answer']) {
         document.getElementById(selection).parentNode.classList.add('bg-success')
+        rightQuestions++;
     }else{
         document.getElementById(selection).parentNode.classList.add('bg-danger')
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success')
@@ -98,7 +111,6 @@ function answer(selection) {
 
 function nextQuestion() {
     currentQuestion++;
-    currentNumberQuestion++;
     document.getElementById('next-button').disabled = true;
     resetAnswerButton();
     showQuestion();
