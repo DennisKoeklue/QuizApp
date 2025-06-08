@@ -35,6 +35,9 @@
           class="card-img-top"
           alt="..."
         />
+        <div class="progress" role="progressbar" >
+          <div class="progress-bar" id="progress-bar" style="width: 0%">0%</div>
+        </div>
 
         <div class="card-body" id="endscreen" style="display: none">
           <div class="text-center">Quiz beendet!</div>
@@ -43,6 +46,13 @@
             Du Hast <b id="amount-of-right-questions">XXX</b> Fragen von
             <b id="amount-of-questions">XXX</b> Richtig beanwortet.
           </div>
+            
+          <div class="button-row">
+            <button onclick="restartGame()" class="btn btn-primary" id="">
+              Erneut Spielen
+            </button>
+          </div>
+
         </div>
 
         <div class="card-body" id="question-body">
